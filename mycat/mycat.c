@@ -14,14 +14,14 @@ int main(int argc, char *argv[]){
 		printf("USAGE: %s newfile\n",argv[0]);
 		exit(-1);
 	}
-	fd =open(argv[1], O_RDWR|O_CREAT, 0664);
+	fd =open(argv[1], O_RDONLY);
 	if (fd < 0){
 		//open error handling
 		perror("fd open error\n");
 	}
 	while((read_size = read(fd, buf, MAX_BUF)) != 0){
         //printf("%s",buf);
-		write_size = write(fd, buf, read_size);
+		write_size = write(STDOUT_FILENO, buf, read_size);
     }
 	close(fd);
 }
