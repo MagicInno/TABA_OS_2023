@@ -11,12 +11,12 @@ int main(int argc, char *argv[]){
 	int fd, read_size, write_size =0;
 	char buf[MAX_BUF];
 	
-	fd = /*	[1] fill out here using system call  */;
+	fd = open(argv[1], O_RDWR|O_CREAT, 0664);
 	
-    //write_size=write( /* [2] fill out here : write argument */ );
+    	write_size=write(fd, dummy, sizeof(dummy));
     //error handling
 	
     printf("write to file %s write size %d\n", fname, write_size);
-	/* [3] fill out here : */ 
+	close(fd);
 }
 
