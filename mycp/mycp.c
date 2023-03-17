@@ -14,7 +14,10 @@ int main(int argc, char *argv[]){
 		printf("USAGE: %s origin dest\n",argv[0]);
 		exit(-1);
 	}
+	
+	fd_orgin = open(argv[1], O_RDONLY);
 	//fd_origin = /*	TODO    [1] fill out here using system call  */;
+	fd_dest = open(argv[2], O_RDWR|O_CREAT, 0664);
 	//fd_dest = /*    TODO	[1-1] fill out here using system call*/;
 
 	if (fd_origin < 0 || fd_dest <0){
@@ -23,9 +26,9 @@ int main(int argc, char *argv[]){
 	}
 
 	//read from the origin file
-	while((read_size = /*TODO [2] fill out here using system call. read origin file*/)!= 0){
+	while((read_size = read(fd_orgin, buf, sizeof(MAX_BUF)))!= 0){
         //write to the dest file
-		write_size = /*TODO [3] fill out here using system call. write to dest file*/;
+		write_size = write(fd_dest, buf, sizeof(MAX_BUF));
 	}
 	close(fd_dest);
     close(fd_origin);
