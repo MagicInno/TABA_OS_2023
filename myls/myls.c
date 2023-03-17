@@ -15,13 +15,13 @@ int main(int argc, char *argv[]){
 		dir = opendir(dir_name);	}
 	else if (argc == 2){
 		dir_name = argv[1]; //warning. 
-		/*TODO [1] fall through. fill out here using directory syscall.  */
+		dir = opendir(dir_name);
 	}else {printf("argc %d : We only accept 1 or 2 args for now\n", argc);
 	exit(-1); 	}
 	
-	while((dentry =/*TODO [2] using dir syscall*/)!=NULL){
+	while((dentry = readdir(dir) != NULL){
 		printf("%s \n", dentry->d_name);
 	}
-	/*TODO [3] fall through. close directory here.  */;
+	closedir(dir);
 }
 
