@@ -23,6 +23,6 @@ int main(int argc, char *argv[]){
         //printf("%s",buf);
 		write_size = write(fd, buf, read_size);
     }
-	/*TODO [4] fall through. fd must be closed. */;
+	close(fd);
 }
 
