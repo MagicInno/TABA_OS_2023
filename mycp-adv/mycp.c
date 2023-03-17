@@ -17,10 +17,10 @@ int main(int argc, char *argv[]){
 		printf("USAGE: %s origin dest\n",argv[0]);
 		exit(-1);	}
 	fd_origin 	= open(argv[1], O_RDONLY);
-	
+	fstat = (fd_origin, stat_origin);
     /*TODO [1] fall through. get file attribute structure from fd_origin */
     
-    flag_origin = /*TODO [2] */;
+    flag_origin = stat_orign.st_mode;
     /* fall through. let's get member from struct stat "stat_origin.some_field_here" see man fstat */;
 	
 
